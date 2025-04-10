@@ -1,9 +1,9 @@
 // AuthFlow.jsx
 import React, { useEffect, useState } from 'react';
 import { View, ActivityIndicator } from 'react-native';
-import LocalPreferences from './LocalPreferences'; // Import your storage helper
-import Login from './components/auth/login'; // Import your Login component
-import Home from './components/content/home'; // Import your Home component
+import LocalPreferences from '../utils/local_preferences'; // Adjust the import path as necessary
+import Login from './auth/login'; // Import your Login component
+import Home from './content/home'; // Import your Home component
 
 
 const AuthFlow = () => {
