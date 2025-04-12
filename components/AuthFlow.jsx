@@ -4,6 +4,7 @@ import { View, ActivityIndicator } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LocalPreferences from "../utils/local_preferences"; // Adjust the import path as necessary
 import { Login } from "./auth/Login"; // Adjust the import path as necessary
+import { Signup } from "./auth/Signup"; // Adjust the import path as necessary
 import { Home } from "./content/Home"; // Adjust the import path as necessary
 
 const Stack = createStackNavigator();
@@ -14,7 +15,8 @@ const AuthFlow = () => {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const loggedIn = await LocalPreferences.retrieveData("isLoggedIn", "bool") ?? false;
+        const loggedIn =
+          (await LocalPreferences.retrieveData("isLoggedIn", "bool")) ?? false;
         console.log("Retrieved isLoggedIn:", loggedIn); // Debug log
         setIsAuthenticated(loggedIn);
       } catch (error) {
@@ -22,7 +24,7 @@ const AuthFlow = () => {
         setIsAuthenticated(false); // Default to not authenticated on error
       }
     };
-  
+
     checkAuthentication();
   }, []);
 
@@ -41,7 +43,10 @@ const AuthFlow = () => {
       {isAuthenticated ? (
         <Stack.Screen name="Home" component={Home} />
       ) : (
-        <Stack.Screen name="Login" component={Login} />
+        <>
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Signup" component={Signup} />
+        </>
       )}
     </Stack.Navigator>
   );

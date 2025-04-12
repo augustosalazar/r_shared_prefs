@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
 
-export function Login(navigation) {
+export function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleLogin = () => {
-    // Add your login logic here
+  const handleSignup = () => {
+    // Add your signup logic here
     console.log("Email:", email);
     console.log("Password:", password);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Sign Up</Text>
       <TextInput
         label="Email"
         value={email}
@@ -30,15 +31,15 @@ export function Login(navigation) {
         secureTextEntry
         style={styles.input}
       />
-      <Button mode="contained" onPress={handleLogin} style={styles.button}>
-        Login
-      </Button>
-      <Button
-        mode="text"
-        onPress={() => navigation.navigation.navigate("Signup")}
-        style={styles.button}
-      >
-        Create an account
+      <TextInput
+        label="Confirm Password"
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
+        secureTextEntry
+        style={styles.input}
+      />
+      <Button mode="contained" onPress={handleSignup} style={styles.button}>
+        Signup
       </Button>
     </View>
   );
