@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, StyleSheet } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
+import { AppContext } from "../../AuthProvider"; 
 
 export function Login(navigation) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { loginUser } = useContext(AppContext);
+
   const handleLogin = () => {
     // Add your login logic here
     console.log("Email:", email);
     console.log("Password:", password);
+    loginUser(); 
   };
 
   return (
