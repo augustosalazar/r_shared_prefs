@@ -25,7 +25,7 @@ export function Home( {navigation}) {
             </Button>
           ),
         });
-      }, [navigation]);
+      }, [navigation, logoutUser]);
 
 
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet,Alert } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
-import { AppContext } from "../../AuthProvider"; 
+import { AppContext } from "../../AuthProvider";
 
 export function Login(navigation) {
   const [email, setEmail] = useState("");
@@ -10,10 +10,18 @@ export function Login(navigation) {
   const { loginUser } = useContext(AppContext);
 
   const handleLogin = () => {
-    // Add your login logic here
-    console.log("Email:", email);
-    console.log("Password:", password);
-    loginUser(); 
+    // Validate the form fields
+    if (!email.trim()) {
+      Alert.alert("Validation Error", "Email cannot be empty.");
+      return;
+    }
+    if (!password.trim()) {
+      Alert.alert("Validation Error", "Password cannot be empty.");
+      return;
+    }
+    loginUser(email, password).catch(() => {
+      Alert.alert("Login Error", "Invalid credentials");
+    });
   };
 
   return (

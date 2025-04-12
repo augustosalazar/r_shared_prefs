@@ -1,16 +1,38 @@
-import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useState, useContext } from "react";
+import { View, StyleSheet, Alert } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
+import { AppContext } from "../../AuthProvider";
 
-export function Signup() {
+export function Signup(navigation) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleSignup = () => {
-    // Add your signup logic here
-    console.log("Email:", email);
-    console.log("Password:", password);
+  const { signupUser } = useContext(AppContext);
+
+  const handleSignup = async () => {
+    if (!email.trim()) {
+      Alert.alert("Validation Error", "Email cannot be empty.");
+      return;
+    }
+    if (!password.trim()) {
+      Alert.alert("Validation Error", "Password cannot be empty.");
+      return;
+    }
+    if (!confirmPassword.trim()) {
+      Alert.alert("Validation Error", "Confirm Password cannot be empty.");
+      return;
+    }
+    if (password !== confirmPassword) {
+      Alert.alert("Validation Error", "Passwords do not match.");
+      return;
+    }
+
+    await signupUser(email, password);
+
+    Alert.alert("Success", "Account created successfully!");
+
+    navigation.navigation.navigate("Login");
   };
 
   return (
