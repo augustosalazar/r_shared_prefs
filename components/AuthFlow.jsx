@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import LocalPreferences from "../utils/local_preferences"; // Adjust the import path as necessary
-import { Login } from "./auth/Login"; // Adjust the import path as necessary
-import { Signup } from "./auth/Signup"; // Adjust the import path as necessary
-import { Home } from "./content/Home"; // Adjust the import path as necessary
+import LocalPreferences from "../utils/local_preferences"; 
+import { Login } from "./auth/Login"; 
+import { Signup } from "./auth/Signup";
+import { Home } from "./content/Home"; 
 
 const Stack = createStackNavigator();
 
@@ -45,7 +45,8 @@ const AuthFlow = () => {
       ) : (
         <>
           <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Signup" component={Signup} />
+          <Stack.Screen name="Signup" component={Signup}
+          options={{ headerShown: true, title: "" }} />
         </>
       )}
     </Stack.Navigator>
