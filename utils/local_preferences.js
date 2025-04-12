@@ -1,5 +1,5 @@
 // LocalPreferences.js
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class LocalPreferences {
   /**
@@ -17,13 +17,13 @@ class LocalPreferences {
       }
 
       // Parse the value based on the expected type.
-      if (type === 'bool') {
+      if (type === "bool") {
         return JSON.parse(storedValue);
-      } else if (type === 'int' || type === 'double' || type === 'number') {
+      } else if (type === "int" || type === "double" || type === "number") {
         return JSON.parse(storedValue);
-      } else if (type === 'string') {
+      } else if (type === "string") {
         return storedValue;
-      } else if (type === 'stringArray') {
+      } else if (type === "stringArray") {
         return JSON.parse(storedValue);
       } else {
         throw new Error("Unsupported type");
@@ -45,11 +45,15 @@ class LocalPreferences {
       let valueToStore;
 
       // Determine how to store based on the value's type.
-      if (typeof value === 'boolean' || typeof value === 'number' || Array.isArray(value)) {
+      if (
+        typeof value === "boolean" ||
+        typeof value === "number" ||
+        Array.isArray(value)
+      ) {
         // For booleans, numbers, and arrays, store as JSON.
         //console.log("Value to store:", value, "Type:", typeof value);
         valueToStore = JSON.stringify(value);
-      } else if (typeof value === 'string') {
+      } else if (typeof value === "string") {
         // Strings can be stored directly.
         //console.log("String value to store:", value);
         valueToStore = value;
@@ -60,7 +64,10 @@ class LocalPreferences {
       await AsyncStorage.setItem(key, valueToStore);
       console.info(`LocalPreferences: Stored key "${key}" with value:`, value);
     } catch (error) {
-      console.error(`Failed to store key "${key}" with value "${value}":`, error);
+      console.error(
+        `Failed to store key "${key}" with value "${value}":`,
+        error
+      );
     }
   }
 }

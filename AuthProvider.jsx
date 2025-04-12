@@ -21,11 +21,13 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const loginUser = async (email, password) => {
-    const storedEmail = await LocalPreferences.retrieveData("email", "string") || "noemail";
-    const storedPassword = await LocalPreferences.retrieveData("password", "string") || "nopassowrd";
+    const storedEmail =
+      (await LocalPreferences.retrieveData("email", "string")) || "noemail";
+    const storedPassword =
+      (await LocalPreferences.retrieveData("password", "string")) ||
+      "nopassowrd";
     console.log("Stored Info:", storedEmail, storedPassword);
     console.log("Input Info:", email, password);
-    
 
     if (email === storedEmail && password === storedPassword) {
       await LocalPreferences.storeData("isLoggedIn", true);

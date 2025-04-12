@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { View, StyleSheet,Alert } from "react-native";
+import { View, StyleSheet, Alert } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
 import { AppContext } from "../../AuthProvider";
 
@@ -60,16 +60,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    justifyContent: "center",
+    justifyContent: "center"
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
-    marginBottom: 24,
+    marginBottom: 24
   },
   input: {
-    marginBottom: 16,
+    marginBottom: 16
   },
-  button: {},
+  button: {}
 });

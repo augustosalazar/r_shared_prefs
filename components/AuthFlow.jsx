@@ -2,10 +2,10 @@
 import React, { useContext } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Login } from "./auth/Login"; 
+import { Login } from "./auth/Login";
 import { Signup } from "./auth/Signup";
-import { Home } from "./content/Home"; 
-import { AppContext } from "../AuthProvider"; 
+import { Home } from "./content/Home";
+import { AppContext } from "../AuthProvider";
 
 const Stack = createStackNavigator();
 
@@ -25,8 +25,10 @@ const AuthFlow = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       {login ? (
-        <Stack.Screen name="Home" component={Home} 
-        options={{ headerShown: true, title: "Home" }}
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: true, title: "Home" }}
         />
       ) : (
         <>

@@ -71,16 +71,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    justifyContent: "center",
+    justifyContent: "center"
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
-    marginBottom: 24,
+    marginBottom: 24
   },
   input: {
-    marginBottom: 16,
+    marginBottom: 16
   },
-  button: {},
+  button: {}
 });

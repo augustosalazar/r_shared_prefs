@@ -6,11 +6,11 @@ import { AuthProvider } from "./AuthProvider";
 export default function App() {
   return (
     <PaperProvider>
-     <AuthProvider>
-      <NavigationContainer>
-        <AuthFlow />
-      </NavigationContainer>
-    </AuthProvider>
+      <AuthProvider>
+        <NavigationContainer>
+          <AuthFlow />
+        </NavigationContainer>
+      </AuthProvider>
     </PaperProvider>
   );
 }
