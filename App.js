@@ -1,24 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import { AuthFlow } from './components/AuthFlow'; // Import your AuthFlow component
+import AuthFlow from "./components/AuthFlow";
+import { NavigationContainer } from "@react-navigation/native";
+import { Provider as PaperProvider } from "react-native-paper";
 
 export default function App() {
   return (
-    <NavigationContainer>
-    <View style={styles.container}>
+    <PaperProvider>
+      <NavigationContainer>
         <AuthFlow />
-      <StatusBar style="auto" />
-    </View>
-    </NavigationContainer>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
