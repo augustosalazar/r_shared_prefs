@@ -32,7 +32,11 @@ const AuthFlow = () => {
         />
       ) : (
         <>
-          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{ headerShown: true, title: "Auth with sharedPrefs" }}
+          />
           <Stack.Screen
             name="Signup"
             component={Signup}

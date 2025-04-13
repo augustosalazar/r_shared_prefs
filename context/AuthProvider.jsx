@@ -1,6 +1,6 @@
 import React from "react"; // Add this import
-import LocalPreferences from "../utils/local_preferences"; // Import LocalPreferences
 import { useEffect } from "react"; // Import useEffect
+import PrefsService from "../services/prefs_service"; // Import SharedPrefsService
 
 export const AppContext = React.createContext();
 
@@ -10,10 +10,7 @@ export const AuthProvider = ({ children }) => {
   // Load the initial value from shared preferences
   useEffect(() => {
     const loadLoginState = async () => {
-      const storedLoginState = await LocalPreferences.retrieveData(
-        "isLoggedIn",
-        "bool"
-      );
+      const storedLoginState = await PrefsService.isLoggedIn();
       setLogin(storedLoginState ?? false); // Default to false if null
     };
 
@@ -21,29 +18,26 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const loginUser = async (email, password) => {
-    const storedEmail =
-      (await LocalPreferences.retrieveData("email", "string")) || "noemail";
-    const storedPassword =
-      (await LocalPreferences.retrieveData("password", "string")) ||
-      "nopassowrd";
-    console.log("Stored Info:", storedEmail, storedPassword);
-    console.log("Input Info:", email, password);
-
-    if (email === storedEmail && password === storedPassword) {
-      await LocalPreferences.storeData("isLoggedIn", true);
+    try {
+      await PrefsService.login(email, password);
       setLogin(true);
-    } else {
-      console.log("Invalid credentials");
-      throw new Error("Invalid credentials"); // Throw an error if credentials are invalid
+    } catch (error) {
+      throw error;
     }
   };
   const logoutUser = async () => {
-    LocalPreferences.storeData("isLoggedIn", false);
+    await PrefsService.logout();
     setLogin(false);
   };
   const signupUser = async (email, password) => {
-    await LocalPreferences.storeData("email", email);
-    await LocalPreferences.storeData("password", password);
+    console.log("provider signupUser called with:", email, password);
+
+    try {
+      await PrefsService.signUp(email, password);
+    } catch (error) {
+      console.error("Signup failed:", error);
+      throw error; // Propagate the error
+    }
   };
 
   return (

@@ -51,11 +51,11 @@ class LocalPreferences {
         Array.isArray(value)
       ) {
         // For booleans, numbers, and arrays, store as JSON.
-        //console.log("Value to store:", value, "Type:", typeof value);
+        console.log("Value to store:", value, "Type:", typeof value);
         valueToStore = JSON.stringify(value);
       } else if (typeof value === "string") {
         // Strings can be stored directly.
-        //console.log("String value to store:", value);
+        console.log("String value to store:", value);
         valueToStore = value;
       } else {
         throw new Error("Unsupported type");

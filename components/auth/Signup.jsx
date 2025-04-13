@@ -28,11 +28,14 @@ export function Signup(navigation) {
       return;
     }
 
-    await signupUser(email, password);
+    console.log("signupUser called with:", email, password);
 
-    Alert.alert("Success", "Account created successfully!");
-
-    navigation.navigation.navigate("Login");
+    try {
+      await signupUser(email, password);
+      navigation.navigation.navigate("Login");
+    } catch (error) {
+      Alert.alert("Signup Error", error.message);
+    }
   };
 
   return (
