@@ -6,7 +6,8 @@ module.exports = {
     "prettier/prettier": [
       "error",
       {
-        trailingComma: "none" // Disable trailing commas
+        trailingComma: "none",
+        endOfLine: "auto"
       }
     ]
   }
