@@ -1,5 +1,5 @@
 import React from "react"; // Add this import
-import LocalPreferences from "./utils/local_preferences"; // Import LocalPreferences
+import LocalPreferences from "../utils/local_preferences"; // Import LocalPreferences
 import { useEffect } from "react"; // Import useEffect
 
 export const AppContext = React.createContext();

@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import * as React from "react";
 import { Button } from "react-native-paper"; // Import Button from react-native-paper
-import { AppContext } from "../../AuthProvider"; // Import the context
+import { AppContext } from "../../context/AuthProvider"; // Import AppContext
 import { useContext } from "react"; // Import useContext
 
 export function Home({ navigation }) {

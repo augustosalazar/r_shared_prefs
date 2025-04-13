@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
-import { AppContext } from "../../AuthProvider";
+import { AppContext } from "../../context/AuthProvider";
 
 export function Signup(navigation) {
   const [email, setEmail] = useState("");
