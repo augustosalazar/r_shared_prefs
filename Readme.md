@@ -14,5 +14,5 @@ react-native-safe-area-context
 react-native-web   
 
 
-Similar to:   
+## Similar to  
 https://github.com/augustosalazar/f_shared_prefs_template
