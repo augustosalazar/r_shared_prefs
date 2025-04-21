@@ -2,7 +2,7 @@
 
 On this project we use a auth logic for login and register with shared preferences using a single user
 
-Here we use:   
+## Here we use   
 react-native-async-storage/async-storage   
 react-native-paper   
 react-native-vector-icons   
