@@ -39,9 +39,20 @@ export const AuthProvider = ({ children }) => {
       throw error; // Propagate the error
     }
   };
+  const getLoggedUser = async () => {
+    try {
+      const user = await PrefsService.getLoggedUser();
+      return user;
+    } catch (error) {
+      console.error("Error retrieving logged user:", error);
+      return "nouser"; // Default value if error occurs
+    }
+  };
 
   return (
-    <AppContext.Provider value={{ login, loginUser, logoutUser, signupUser }}>
+    <AppContext.Provider
+      value={{ login, loginUser, logoutUser, signupUser, getLoggedUser }}
+    >
       {children}
     </AppContext.Provider>
   );
